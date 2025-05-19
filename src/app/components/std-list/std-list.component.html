@@ -1,0 +1,29 @@
+<table class="table table-bordered" *ngIf="stdArr.length > 0 ; else nostd">
+    <thead>
+        <tr>
+            <th>SRNO</th>
+            <th>FNAME</th>
+            <th>LNAME</th>
+            <th>EMAIL</th>
+            <th>CONTACT</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let std of stdArr; let i= index">
+            <td>{{i+1}}</td>
+            <td>{{std.fname}}</td>
+            <td>{{std.lname}}</td>
+            <td>{{std.email}}</td>
+            <td>{{std.contact}}</td>
+            <td><button (click)="onEdit(std)" class="btn btn-outline-primary">edit</button></td>
+            <td><button (click)="onRemove(std.stdId)" class="btn btn-outline-danger">remove</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #nostd>
+    <p class="alert alert-info">NO STD FOUND</p>
+</ng-template>

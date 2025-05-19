@@ -1,0 +1,50 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="stdForm" (ngSubmit)="onStdAdd()">
+       <div class="form-group">
+          <label for="fname">Fname*</label>
+          <input type="text" class="form-control" id="fname" formControlName="fname" >
+          <strong class="text-danger" *ngIf="f['fname'].touched && f['fname'].hasError('required')">
+              Fname is required field
+          </strong>
+          
+       </div>
+
+        <div class="form-group">
+          <label for="lname">Lname*</label>
+          <input type="text" class="form-control" id="lname" formControlName="lname" >
+           <strong class="text-danger" *ngIf="f['lname'].touched && f['lname'].hasError('required')">
+              Lname is required field
+          </strong>
+       </div>
+
+        <div class="form-group">
+          <label for="fname">Email*</label>
+          <input type="text" class="form-control" id="email" formControlName="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" >
+           <strong class="text-danger" *ngIf="f['email'].touched && f['email'].hasError('required')">
+              Email is required field
+          </strong>
+           <strong class="text-danger" *ngIf="f['email'].dirty && f['email'].hasError('pattern')">
+              Invalid email id it should be like jhon12@gmail.com
+          </strong>
+       </div>
+
+        <div class="form-group">
+          <label for="contact">Contact*</label>
+          <input type="text" class="form-control" id="contact" formControlName="contact" >
+           <strong class="text-danger" *ngIf="f['contact'].touched && f['contact'].hasError('required')">
+              contact is required field
+          </strong>
+           <strong class="text-danger" *ngIf="f['contact'].dirty && f['contact'].hasError('minlength')">
+              minLength length should be 10
+          </strong>
+           <strong class="text-danger" *ngIf="f['contact'].dirty && f['contact'].hasError('maxlength')">
+              maximum length should be 10
+          </strong>
+       </div>
+
+       <button *ngIf="!isineditmode"  class="btn btn-sm btn-outline-info">ADD STUDENT</button>
+       <button *ngIf="isineditmode" type="button" (click)="onUpdate()" class="btn btn-sm btn-outline-info">UPDATE STUDENT</button>
+    </form>
+  </div>
+</div>
